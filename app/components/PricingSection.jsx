@@ -63,7 +63,7 @@ const PricingSection = () => {
                 <div className="flex justify-center">
                   <div className="w-[133px] bg-[#01B2C1] rounded-full p-[10px] text-center">
                     Get Started
-                  </div>
+                  </div> 
                 </div>
               </div>
             </div>
