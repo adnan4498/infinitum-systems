@@ -13,18 +13,6 @@ import Testimonials from "./components/Testimonials";
 import NewsLetterSection from "./components/NewsLetterSection";
 import Footer from "./components/Footer";
 
-const poppins = Poppins({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-poppins",
-});
-
-const abhayaLibre = Abhaya_Libre({
-  subsets: ["latin"],
-  weight: ["400", "700", "800"],
-  variable: "--font-abhaya-libre",
-});
-
 export default function Home() {
   return (
     <div
@@ -50,29 +38,29 @@ export default function Home() {
       <div className="mt-[141px]">
         <AnimatedAboutUsSection />
       </div>
-      <div className="mt-[100px] px-[108px]">
+      <div className="mt-[100px] px-[108px] 1280:px-[40px]">
         <ServicesSection />
       </div>
 
-      <div className="2xl:px-[84px] mt-[350px]">
+      <div className="2xl:px-[84px] 1280:px-[40px] mt-[350px]">
         <BenifitsSection />
       </div>
 
-      <div className="2xl:px-[84px] py-44">
+      <div className="2xl:px-[84px] py-44 1280:px-[40px]">
         <AmazingSection />
       </div>
       <div className="mt-10">
         <PricingSection />
       </div>
-      <div className="2xl:px-[84px] py-44">
+      <div className="2xl:px-[84px] py-10">
         <Testimonials />
       </div>
 
-      <div className="2xl:px-[84px] py-44">
+      <div className="2xl:px-[84px] py-10">
         <NewsLetterSection />
       </div>
 
-      <div className="2xl:px-[84px] py-44">
+      <div className="2xl:px-[84px] py-44  1280:px-[40px]">
         <Footer />
       </div>
     </div>

@@ -38,45 +38,44 @@ export default function Testimonials() {
 
   return (
     <div
-      className="2xl:bg-[#00051C] 2xl:min-h-screen 2xl:w-full"
+      className="bg-[#00051C] min-h-screen w-full 3xl:px-10"
       style={{
-        backgroundColor: "rgb(0, 5, 28)",
         backgroundImage: `url('/gradient.png')`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "left center",
         backgroundSize: "contain",
       }}
     >
-      <section className="2xl:relative 2xl:w-full 2xl:overflow-hidden 2xl:text-white 2xl:py-20 2xl:px-4 2xl:flex 2xl:flex-col 2xl:items-center 2xl:text-center 2xl:z-10">
-        <h3 className="2xl:text-[24px] 2xl:text-gray-400">Testimonials</h3>
-        <h2 className="2xl:text-[68px] 2xl:font-bold 2xl:mt-[10px]">
-          What <span className="2xl:!text-cyan-400">Our Client</span> Says
+      <section className="min-[1080px]:relative min-[1080px]:w-full min-[1080px]:overflow-hidden min-[1080px]:text-white min-[1080px]:py-20 min-[1080px]:px-4 min-[1080px]:flex min-[1080px]:flex-col min-[1080px]:items-center min-[1080px]:text-center min-[1080px]:z-10 2xl:relative 2xl:py-20 2xl:px-4 2xl:text-white 2xl:flex 2xl:flex-col 2xl:items-center 2xl:text-center 2xl:z-10 3xl:py-28 3xl:px-10">
+        <h3 className="min-[1080px]:text-[20px] text-gray-400 2xl:text-[24px] 3xl:text-[28px]">Testimonials</h3>
+        <h2 className="min-[1080px]:text-[42px] font-bold mt-[8px] 2xl:text-[68px] 2xl:mt-[10px] 3xl:text-[76px] 3xl:mt-[12px]">
+          What <span className="!text-cyan-400">Our Client</span> Says
         </h2>
 
-        <div className="2xl:relative 2xl:bg-[#032d3e] 2xl:max-w-2xl 2xl:w-full 2xl:rounded-xl 2xl:px-8 2xl:py-16">
-          <div className="2xl:absolute 2xl:-bottom-10 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 2xl:w-20 2xl:h-20 2xl:border-4 2xl:border-cyan-400 2xl:rounded-full 2xl:overflow-hidden 2xl:bg-gray-200">
+        <div className="min-[1080px]:relative min-[1080px]:bg-[#032d3e] min-[1080px]:max-w-2xl min-[1080px]:w-full min-[1080px]:rounded-xl min-[1080px]:px-6 min-[1080px]:py-14 2xl:rounded-xl 2xl:px-8 2xl:py-16 2xl:max-w-2xl 3xl:max-w-3xl 3xl:px-12 3xl:py-20 3xl:rounded-2xl">
+          <div className="min-[1080px]:absolute min-[1080px]:-bottom-10 min-[1080px]:left-1/2 min-[1080px]:transform min-[1080px]:-translate-x-1/2 min-[1080px]:w-16 min-[1080px]:h-16 min-[1080px]:border-4 min-[1080px]:border-cyan-400 min-[1080px]:rounded-full min-[1080px]:overflow-hidden min-[1080px]:bg-gray-200 2xl:w-20 2xl:h-20 3xl:w-24 3xl:h-24">
             <img
               src={testimonials[current].img}
               alt={testimonials[current].name}
-              className="2xl:w-full 2xl:h-full 2xl:object-cover"
+              className="w-full h-full object-cover"
             />
           </div>
 
-          <p className="2xl:text-base 2xl:text-gray-300 2xl:leading-relaxed 2xl:mb-6">
+          <p className="min-[1080px]:text-[15px] text-gray-300 leading-relaxed mb-6 3xl:text-lg 3xl:mb-8">
             {testimonials[current].text}
           </p>
-          <h4 className="2xl:text-cyan-400 2xl:font-bold 2xl:text-lg">
+          <h4 className="text-cyan-400 font-bold text-[16px] 3xl:text-xl">
             {testimonials[current].name}
           </h4>
-          <p className="2xl:text-sm 2xl:text-gray-400">
+          <p className="text-sm text-gray-400 3xl:text-base">
             {testimonials[current].title}
           </p>
         </div>
 
-        <div className="2xl:mt-16 2xl:flex 2xl:items-center 2xl:justify-center 2xl:gap-4 2xl:flex-wrap">
+        <div className="min-[1080px]:mt-14 min-[1080px]:flex min-[1080px]:items-center min-[1080px]:justify-center min-[1080px]:gap-3 min-[1080px]:flex-wrap 2xl:mt-16 2xl:gap-4 3xl:mt-20 3xl:gap-6 cursor-pointer">
           <button
             onClick={prev}
-            className="2xl:w-10 2xl:h-10 2xl:border-2 2xl:border-cyan-400 2xl:text-cyan-400 2xl:rounded-full 2xl:flex 2xl:items-center 2xl:justify-center 2xl:text-xl 2xl:hover:bg-cyan-400 2xl:hover:text-black 2xl:transition"
+            className="min-[1080px]:w-9 min-[1080px]:h-9 min-[1080px]:text-lg min-[1080px]:border-2 min-[1080px]:border-cyan-400 min-[1080px]:text-cyan-400 min-[1080px]:rounded-full min-[1080px]:flex min-[1080px]:items-center min-[1080px]:justify-center min-[1080px]:hover:bg-cyan-400 min-[1080px]:hover:text-black min-[1080px]:transition 2xl:w-10 2xl:h-10 2xl:text-xl 3xl:w-12 3xl:h-12 3xl:text-2xl"
           >
             ←
           </button>
@@ -84,31 +83,33 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`2xl:w-12 2xl:h-12 2xl:rounded-full 2xl:overflow-hidden 2xl:border 2xl:transition-transform 2xl:duration-300 ${
+              className={`min-[1080px]:w-10 min-[1080px]:h-10 min-[1080px]:rounded-full min-[1080px]:overflow-hidden min-[1080px]:border min-[1080px]:transition-transform min-[1080px]:duration-300 2xl:w-12 2xl:h-12 3xl:w-14 3xl:h-14 ${
                 i === current
-                  ? "2xl:border-cyan-400 2xl:border-4 2xl:scale-110"
-                  : "2xl:border-gray-400 2xl:opacity-50"
+                  ? "min-[1080px]:border-cyan-400 min-[1080px]:border-4 min-[1080px]:scale-110"
+                  : "min-[1080px]:border-gray-400 min-[1080px]:opacity-50"
               }`}
             >
               <img
                 src={t.img}
                 alt={t.name}
-                className="2xl:w-full 2xl:h-full 2xl:object-cover"
+                className="w-full h-full object-cover"
               />
             </div>
           ))}
 
           <button
             onClick={next}
-            className="2xl:w-10 2xl:h-10 2xl:border-2 2xl:border-cyan-400 2xl:text-cyan-400 2xl:rounded-full 2xl:flex 2xl:items-center 2xl:justify-center 2xl:text-xl 2xl:hover:bg-cyan-400 2xl:hover:text-black 2xl:transition"
+            className="min-[1080px]:w-9 min-[1080px]:h-9 min-[1080px]:text-lg min-[1080px]:border-2 min-[1080px]:border-cyan-400 min-[1080px]:text-cyan-400 min-[1080px]:rounded-full min-[1080px]:flex min-[1080px]:items-center min-[1080px]:justify-center min-[1080px]:hover:bg-cyan-400 min-[1080px]:hover:text-black min-[1080px]:transition 2xl:w-10 2xl:h-10 2xl:text-xl 3xl:w-12 3xl:h-12 3xl:text-2xl"
           >
             →
           </button>
         </div>
       </section>
 
-      <div>
-        <hr className="!text-[#01B2C1] bg-[#01B2C1] 2xl:w-[1297px]"></hr>
+      <div className="">
+        <div className="flex justify-center">
+        <hr className="!text-[#01B2C1] bg-[#01B2C1] min-[1080px]:w-[1400px] min-[1280px]:w-[1200px] 2xl:w-[1297px] 3xl:w-[1700px]" />
+        </div>
       </div>
     </div>
   );

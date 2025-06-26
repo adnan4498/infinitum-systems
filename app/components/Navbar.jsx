@@ -31,15 +31,15 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`py-8 md:py-14 px-[108px] fixed w-full z-50 top-0 start-0 transition-colors duration-300 ${
+      className={`py-8 md:py-14 px-[108px] 3xl:px-[s] fixed w-full z-50 top-0 start-0 transition-colors duration-300 ${
         scrolled ? "bg-[#00051C] backdrop-blur-lg shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between ">
+      <div className="max-w-screen-xl 3xl:max-w-[1600px] flex flex-wrap items-center justify-between">
         <div className="flex items-center">
           <Image
             src="/logo.svg"
-            className="h-12 md:h-16 ml-1"
+            className="h-12 md:h-16 3xl:h-20 ml-1"
             alt="Logo"
             width={180}
             height={16}
@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="flex md:order-2">
           <button
             type="button"
-            className="hidden md:inline-block bg-[#01b2c1] text-white hover:bg-white hover:!text-[#01b2c1] cursor-pointer px-6 py-2 rounded-full font-semibold  transition duration-300"
+            className="hidden md:inline-block bg-[#01b2c1] text-white hover:bg-white hover:!text-[#01b2c1] cursor-pointer px-6 py-2 3xl:px-8 3xl:py-3 rounded-full font-semibold text-base 3xl:text-lg transition duration-300"
           >
             Get started
           </button>
@@ -92,34 +92,19 @@ const Navbar = () => {
           </button>
         </div>
 
-        <div className="flex justify-center gap-[64px]">
-          {/* <ul className="flex flex-col p-4 md:p-0 mt-4 rounded-lg md:flex-row md:mt-0 md:space-x-10">
-            {navItems.map((item) => (
-              <li key={item}>
-                <a
-                  href="#"
-                  onClick={() => handleItemClick(item)}
-                  className={`block py-2 px-3 relative group transition-all duration-300 font-extralight text-lg ${
-                    activeItem === item
-                      ? 'text-[#01B2C1]'
-                      : 'text-white hover:text-[#01B2C1]'
-                  }`}
-                >
-                  {item}
-                  <span className={`absolute bottom-0 left-0 w-full h-px transition-all duration-300 ${
-                    activeItem === item
-                      ? 'bg-[#01B2C1] scale-x-100'
-                      : 'bg-white scale-x-0 group-hover:scale-x-100 group-hover:bg-[#01B2C1]'
-                  }`}></span>
-                </a>
-              </li>
-            ))}
-          </ul> */}
-
-          <div className="!text-[#46F0FF]">Home</div>
-          <div>About us</div>
-          <div>What We do</div>
-          <div>Testimonials</div>
+        <div className="hidden cursor-pointer md:flex justify-center gap-[64px] 3xl:gap-[96px] text-base 3xl:text-lg font-light group">
+          <div className="text-[#46F0FF] group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
+            Home
+          </div>
+          <div className="text-white group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
+            About us
+          </div>
+          <div className="text-white group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
+            What We do
+          </div>
+          <div className="text-white group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
+            Testimonials
+          </div>
         </div>
       </div>
 
@@ -158,7 +143,7 @@ const Navbar = () => {
                 <a
                   href="#"
                   onClick={() => handleItemClick(item)}
-                  className={`block py-3 text-center text-xl relative font-extralight transition-all duration-300 ${
+                  className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
                     activeItem === item
                       ? "text-[#01B2C1]"
                       : "text-white hover:text-[#01B2C1]"
@@ -180,7 +165,7 @@ const Navbar = () => {
           <div className="mt-12">
             <button
               type="button"
-              className="bg-[#01B2C1] text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-[#01B2C1] transition duration-300 text-lg"
+              className="bg-[#01B2C1] text-white px-8 py-3 3xl:px-10 3xl:py-4 3xl:text-xl rounded-full font-semibold hover:bg-white hover:text-[#01B2C1] transition duration-300"
             >
               Get started
             </button>
