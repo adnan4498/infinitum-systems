@@ -3,8 +3,11 @@ import React from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import circleIcon from "../../public/circle.svg"
-import ladyImg from "../../public/about-us-lady.png"
+import circleIcon from "../../public/circle.svg";
+import ladyImg from "../../public/about-us-lady.png";
+import { DD } from "./DD";
+import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
+// import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
 const AnimatedAboutUsSection = () => {
   const { ref, inView } = useInView({ triggerOnce: true, threshold: 0.2 });
@@ -14,13 +17,8 @@ const AnimatedAboutUsSection = () => {
       ref={ref}
       className="flex flex-col lg:flex-row items-center lg:gap-10 w-full px-6 lg:px-16 py-20 bg-[#00051C] relative overflow-hidden"
     >
-      <motion.div
-        initial={{ opacity: 0, x: -80 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8 }}
-        className="relative w-full  flex justify-center items-center"
-      >
-        <div className="group relative w-[581px] h-[570px] overflow-hidden border-t-8 border-l-8 border-b-8 border-r-0 border-sky-300">
+      <div className="relative w-full  flex justify-center items-center">
+        {/* <div className="group relative w-[581px] h-[570px] overflow-hidden border-t-8 border-l-8 border-b-8 border-r-0 border-sky-300">
           <Image
             src="/about-us-lady.png"
             alt="About Us"
@@ -30,28 +28,55 @@ const AnimatedAboutUsSection = () => {
           />
           {inView && (
             <div className="absolute inset-0 z-10 pointer-events-none">
-              {/* Optional Glow or Animation */}
               <div className="glow-border" />
             </div>
           )}
-        </div>
-      </motion.div>
+        </div> */}
+        {/* <DD /> */}
 
-      <div className="absolute right-[100px] top-[0px]">
-         <Image
-            src="/circle.svg"
-            alt="About Us"
-            width={157}
-            height={157}
-          />
+        <CardContainer className="inter-var">
+          <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
+            <CardItem
+              translateZ="50"
+              className="text-xl font-bold text-neutral-600 dark:text-white"
+            >
+              Make things float in air
+            </CardItem>
+            <CardItem
+              as="p"
+              translateZ="60"
+              className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
+            >
+              Hover over this card to unleash the power of CSS perspective
+            </CardItem>
+          </CardBody>
+        </CardContainer>
+        
       </div>
 
-      <motion.div
-        initial={{ opacity: 0, x: 80 }}
-        animate={inView ? { opacity: 1, x: 0 } : {}}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="mt-10 lg:mt-0 w-full text-white"
-      >
+{/* 
+        <CardContainer className="inter-var">
+          <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-[600px] h-auto rounded-xl p-6 border  ">
+            <CardItem
+              translateZ="100"
+              rotateX={20}
+              rotateZ={-10}
+              className="w-full mt-4"
+            >
+                <Image
+                  src="/about-us-lady.png"
+                  width={660}
+                  height={400}
+                />
+            </CardItem>
+          </CardBody>
+        </CardContainer> */}
+
+      <div className="absolute right-[100px] top-[0px]">
+        <Image src="/circle.svg" alt="About Us" width={157} height={157} />
+      </div>
+
+      <div className="mt-10 lg:mt-0 w-8/12 text-white">
         <h3 className="text-2xl text-center lg:text-left">
           <span className="font-semibold ">About </span>
           <span className="!text-[#01B2C1] font-semibold">Us</span>
@@ -69,7 +94,7 @@ const AnimatedAboutUsSection = () => {
         <button className="mt-8 bg-[#01b2c1] text-white hover:bg-white hover:!text-[#01b2c1] cursor-pointer px-6 py-3 rounded-full font-semibold   transition duration-300 w-[121px]">
           Explore
         </button>
-      </motion.div>
+      </div>
     </div>
   );
 };

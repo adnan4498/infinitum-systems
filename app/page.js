@@ -12,57 +12,133 @@ import PricingSection from "./components/PricingSection";
 import Testimonials from "./components/Testimonials";
 import NewsLetterSection from "./components/NewsLetterSection";
 import Footer from "./components/Footer";
+import GlowingCard from "./components/Dummy";
+import { ThreeDMarquee } from "./components/ui/3d-marquee";
+import bImg from "../public/benifits-img.png";
+import SmoothScrollProvider from "./smooth-scroll-provider";
+import { BuildWebsitesSection } from "./components/BuildWebsitesSection";
+// import palmVideo from "../public/the-palm-video.mp4";
+import kaiserImg from "../public/kaiser-img.png";
+import HBOimg from "../public/hbo-img.png";
+import zenSilkImg from "../public/silk-zen-img.png";
+import { UltimateDevelopmentSection } from "./components/UltimateDevelopmentSection";
+import {DD} from "./components/DD";
 
 export default function Home() {
+  const images = [
+    kaiserImg.src,
+    { type: "video", src: "/atelier-video.mp4" },
+    zenSilkImg.src,
+    { type: "video", src: "/kaiser-video.mp4" },
+    HBOimg.src,
+    { type: "video", src: "/plinth-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/the-palm-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/atelier-video.mp4" },
+    zenSilkImg.src,
+    { type: "video", src: "/kaiser-video.mp4" },
+    HBOimg.src,
+    { type: "video", src: "/plinth-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/atelier-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/kaiser-video.mp4" },
+    HBOimg.src,
+    { type: "video", src: "/the-palm-video.mp4" },
+    zenSilkImg.src,
+    { type: "video", src: "/plinth-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/atelier-video.mp4" },
+    HBOimg.src,
+    { type: "video", src: "/kaiser-video.mp4" },
+    zenSilkImg.src,
+    { type: "video", src: "/the-palm-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/plinth-video.mp4" },
+    kaiserImg.src,
+    { type: "video", src: "/the-palm-video.mp4" },
+    HBOimg.src,
+    { type: "video", src: "/atelier-video.mp4" },
+    zenSilkImg.src,
+    { type: "video", src: "/kaiser-video.mp4" },
+  ];
+
   return (
-    <div
-      className="bg-[#00051C] min-h-screen"
-      style={{
-        backgroundColor: "rgb(0, 5, 28)",
-        backgroundImage: `
+    <>
+      <SmoothScrollProvider>
+        <div
+          className="bg-[#00051C] min-h-screen"
+          style={{
+            backgroundColor: "rgb(0, 5, 28)",
+            backgroundImage: `
           radial-gradient(circle at 50% -35%, rgb(1, 178, 193) 0px, transparent 30%)`,
 
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-      }}
-    >
-      <div>
-        <Navbar />
-      </div>
-      <div>
-        <HeroSection />
-      </div>
-      <div>
-        <LogoCarousel />
-      </div>
-      <div className="mt-[141px]">
-        <AnimatedAboutUsSection />
-      </div>
-      <div className="mt-[100px] px-[108px] 1280:px-[40px]">
-        <ServicesSection />
-      </div>
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
+          <div>
+            <Navbar />
+          </div>
+          <div>
+            <HeroSection />
+          </div>
 
-      <div className="2xl:px-[84px] 1280:px-[40px] mt-[350px]">
-        <BenifitsSection />
-      </div>
+          
+          {/* <div>
+            <LogoCarousel />
+          </div> */}
 
-      <div className="2xl:px-[84px] py-44 1280:px-[40px]">
-        <AmazingSection />
-      </div>
-      <div className="mt-10">
-        <PricingSection />
-      </div>
-      <div className="2xl:px-[84px] py-10">
-        <Testimonials />
-      </div>
+          <div className="py-20">
+            <BuildWebsitesSection />
+          </div>
 
-      <div className="2xl:px-[84px] py-10">
-        <NewsLetterSection />
-      </div>
+          <div className="">
+            <UltimateDevelopmentSection />
+          </div>
 
-      <div className="2xl:px-[84px] py-44  1280:px-[40px]">
-        <Footer />
-      </div>
-    </div>
+
+          <div className="mt-[141px]">
+            <AnimatedAboutUsSection />
+          </div>
+
+          <div className="mt-[100px] px-[108px] 1280:px-[40px]">
+            <ServicesSection />
+          </div>
+
+          <div className="2xl:px-[84px] 1280:px-[40px] mt-[350px]">
+            <BenifitsSection />
+          </div>
+
+          <div className="2xl:px-[84px] py-44 1280:px-[40px]">
+            <AmazingSection />
+          </div>
+
+          {/* <div className="py-20 cursor-pointer">
+            <ThreeDMarquee images={images} />
+          </div> */}
+
+          <div className="">
+            <PricingSection />
+          </div>
+          <div className="2xl:px-[84px] py-10">
+            <Testimonials />
+          </div>
+
+          <div className="2xl:px-[84px] py-10">
+            <NewsLetterSection />
+          </div>
+
+          <div className="2xl:px-[84px] py-44  1280:px-[40px]">
+            <Footer />
+          </div>
+
+          {/* <div className="my-60 py-60">
+        <GlowingCard />
+      </div> */}
+        </div>
+      </SmoothScrollProvider>
+    </>
   );
 }

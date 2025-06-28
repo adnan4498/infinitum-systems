@@ -1,6 +1,10 @@
 "use client";
 import Image from "next/image";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import gsap from "gsap";
+import { TextPlugin } from "gsap/TextPlugin";
+
+gsap.registerPlugin(TextPlugin);
 
 const Counter = ({ target, label, suffix }) => {
   const [count, setCount] = useState(0);
@@ -38,12 +42,40 @@ const Counter = ({ target, label, suffix }) => {
 };
 
 const HeroSection = () => {
+  const wordRef = useRef(null); // ✅ Define ref here
+
+  useEffect(() => {
+    const words = ["Solution", "Innovation", "Strategy", "Technology"];
+    const tl = gsap.timeline({ repeat: -1, repeatDelay: 0.5 });
+
+    // Force initial clear to avoid render delay
+    gsap.set(wordRef.current, { text: "" });
+
+    words.forEach((word) => {
+      tl.to(wordRef.current, {
+        duration: 1,
+        text: word,
+        ease: "none",
+      })
+        .to({}, { duration: 1 }) // pause after typing
+        .to(wordRef.current, {
+          duration: 0.5,
+          text: "",
+          ease: "power2.in",
+        });
+    });
+  }, []);
+
   return (
     <>
       <div className="py-64 px-[108px] relative flex justify-between items-start">
         <div>
           <h1 className="text-7xl font-extrabold text-white uppercase">
-            Creative <span className="!text-[#46F0FF]">Solution</span> <br />
+            Creative{" "}
+            <span className="!text-[#46F0FF]" ref={wordRef}>
+              Solution
+            </span>
+            <br />
             For a Digital <br /> World
           </h1>
           <button

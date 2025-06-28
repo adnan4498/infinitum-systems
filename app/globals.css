@@ -4,12 +4,18 @@
 
 @import "tailwindcss";
 
+/* html {
+  scroll-behavior: smooth;
+} */
 
 body {
   font-family: 'Poppins', sans-serif;
   color: white;
 }
 
+.marquee-item {
+  will-change: transform;
+}
 
 @theme {
   --breakpoint-xs: 30rem;       /* 480px */

@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
+import { Button } from "./ui/moving-border";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -22,7 +23,6 @@ const Navbar = () => {
         setScrolled(false);
       }
     };
-
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -31,8 +31,10 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`py-8 md:py-14 px-[108px] 3xl:px-[s] fixed w-full z-50 top-0 start-0 transition-colors duration-300 ${
-        scrolled ? "bg-[#00051C] backdrop-blur-lg shadow-md" : "bg-transparent"
+      className={`py-8 md:py-10 px-[108px] 3xl:px-[s] fixed w-full z-50 top-0 start-0 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#00051C]/60 backdrop-blur-xl shadow-md "
+          : "bg-transparent"
       }`}
     >
       <div className="max-w-screen-xl 3xl:max-w-[1600px] flex flex-wrap items-center justify-between">
@@ -47,12 +49,22 @@ const Navbar = () => {
         </div>
 
         <div className="flex md:order-2">
-          <button
+          {/* <button
             type="button"
             className="hidden md:inline-block bg-[#01b2c1] text-white hover:bg-white hover:!text-[#01b2c1] cursor-pointer px-6 py-2 3xl:px-8 3xl:py-3 rounded-full font-semibold text-base 3xl:text-lg transition duration-300"
           >
             Get started
-          </button>
+          </button> */}
+
+          <Button
+            // className="font-semibold text-base 3xl:text-lg px-6 py-2 3xl:px-8 3xl:py-3"
+            className="font-semibold text-lg cursor-pointer"
+            containerClassName="hidden md:inline-block"
+            borderRadius="9999px"
+            duration={3000}
+          >
+            Get started
+          </Button>
           <button
             onClick={toggleMenu}
             type="button"
@@ -93,18 +105,19 @@ const Navbar = () => {
         </div>
 
         <div className="hidden cursor-pointer md:flex justify-center gap-[64px] 3xl:gap-[96px] text-base 3xl:text-lg font-light group">
-          <div className="text-[#46F0FF] group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
-            Home
-          </div>
-          <div className="text-white group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
-            About us
-          </div>
-          <div className="text-white group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
-            What We do
-          </div>
-          <div className="text-white group-hover:text-white hover:!text-[#46F0FF] transition-colors duration-300">
-            Testimonials
-          </div>
+          {navItems.map((item) => (
+            <div
+              key={item}
+              className={`transition-colors duration-300 ${
+                activeItem === item
+                  ? "text-[#46F0FF]"
+                  : "text-white hover:!text-[#46F0FF]"
+              }`}
+              onClick={() => handleItemClick(item)}
+            >
+              {item}
+            </div>
+          ))}
         </div>
       </div>
 

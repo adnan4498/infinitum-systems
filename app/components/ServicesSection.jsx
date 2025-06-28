@@ -1,9 +1,11 @@
 "use client";
+
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import heroLadyImg from "../../public/hero-lady.png";
+import { SparklesCore } from "./ui/sparkles";
 
 const services = [
   {
@@ -117,6 +119,21 @@ const ServiceCards = () => {
                     height={440}
                     className="object-cover w-full h-[440px]"
                   />
+
+                  <SparklesCore
+                    background="transparent"
+                    minSize={0.4}
+                    maxSize={1}
+                    particleDensity={60}
+                    className="absolute top-0 left-0 w-full h-full z-20 pointer-events-none"
+                    particleColor="#00FFFF"
+                  />
+
+                  <div className="absolute top-6 left-6 z-30">
+                    <h2 className="text-white text-xl font-bold tracking-wide">
+                      {service.title}
+                    </h2>
+                  </div>
 
                   <div
                     ref={(el) => (arrowRefs.current[index] = el)}

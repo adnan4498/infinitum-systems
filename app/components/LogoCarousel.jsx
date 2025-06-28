@@ -10,33 +10,28 @@ const logos = [
   '/macys.svg',
   '/menshealth.svg',
   '/mrbeast.svg',
+  
 ];
 
 const LogoCarousel = () => {
   return (
-    <section className="logo-slider overflow-x-hidden bg-[#00051C]">
-        <div className="slider relative h-[110px]">
-          <div className="slide-track absolute top-0 left-0 flex  w-[200%] animate-scroll">
-            {[...logos, ...logos].map((src, index) => (
-              <div
-                key={index}
-                className="slide flex h-full items-center"
-              >
-                <div className="mr-[52px] flex h-[91px] w-[120px] items-center justify-center bg-gray-50 rounded shadow">
-                  <img
-                    src={src}
-                    alt="logo"
-                    className="h-12 w-24 object-contain grayscale hover:grayscale-0 transition duration-300"
-                  />
-                </div>
-              </div>
-            ))}
-          </div>
+    <section className="logo-slider overflow-hidden bg-white py-8">
+      <div className="relative w-full whitespace-nowrap">
+        <div className="inline-flex animate-marquee">
+          {[...logos, ...logos].map((src, index) => (
+            <div key={index} className="mx-8 inline-flex items-center">
+              <img
+                src={src}
+                alt="logo"
+                className="h-12 w-auto object-contain opacity-50 hover:opacity-100 transition duration-300"
+              />
+            </div>
+          ))}
         </div>
+      </div>
 
-      {/* Styled-JSX animation */}
       <style jsx>{`
-        @keyframes scroll {
+        @keyframes marquee {
           0% {
             transform: translateX(0);
           }
@@ -44,8 +39,8 @@ const LogoCarousel = () => {
             transform: translateX(-50%);
           }
         }
-        .animate-scroll {
-          animation: scroll 25s linear infinite;
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
         }
       `}</style>
     </section>

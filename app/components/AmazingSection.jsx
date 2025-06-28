@@ -4,6 +4,10 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import gsap from "gsap";
 import circleIcon from "../../public/circle.svg";
+import { ThreeDMarquee } from "./ui/3d-marquee";
+import kaiserImg from "../../public/kaiser-img.png";
+import HBOimg from "../../public/hbo-img.png";
+import zenSilkImg from "../../public/silk-zen-img.png";
 
 const AmazingSection = () => {
   const cardRefs = useRef([]);
@@ -45,6 +49,46 @@ const AmazingSection = () => {
     });
   }, []);
 
+
+   const images = [
+      kaiserImg.src,
+      { type: "video", src: "/atelier-video.mp4" },
+      zenSilkImg.src,
+      { type: "video", src: "/kaiser-video.mp4" },
+      HBOimg.src,
+      { type: "video", src: "/plinth-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/the-palm-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/atelier-video.mp4" },
+      zenSilkImg.src,
+      { type: "video", src: "/kaiser-video.mp4" },
+      HBOimg.src,
+      { type: "video", src: "/plinth-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/atelier-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/kaiser-video.mp4" },
+      HBOimg.src,
+      { type: "video", src: "/the-palm-video.mp4" },
+      zenSilkImg.src,
+      { type: "video", src: "/plinth-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/atelier-video.mp4" },
+      HBOimg.src,
+      { type: "video", src: "/kaiser-video.mp4" },
+      zenSilkImg.src,
+      { type: "video", src: "/the-palm-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/plinth-video.mp4" },
+      kaiserImg.src,
+      { type: "video", src: "/the-palm-video.mp4" },
+      HBOimg.src,
+      { type: "video", src: "/atelier-video.mp4" },
+      zenSilkImg.src,
+      { type: "video", src: "/kaiser-video.mp4" },
+    ];
+
   return (
     <div className="relative">
       <div className="min-[1080px]:flex justify-between min-[1280px]:justify-normal min-[1280px]:gap-[120px] 2xl:flex 3xl:justify-normal 3xl:gap-[160px]">
@@ -80,7 +124,14 @@ const AmazingSection = () => {
         </div>
       </div>
 
-      <div className="min-[1080px]:flex justify-around min-[1280px]:gap-[30px] 2xl:flex gap-[25px] mt-[40px] 3xl:gap-[50px]">
+
+
+        <div className="py-20 cursor-pointer">
+            <ThreeDMarquee images={images} />
+          </div>
+
+
+      {/* <div className="min-[1080px]:flex justify-around min-[1280px]:gap-[30px] 2xl:flex gap-[25px] mt-[40px] 3xl:gap-[50px]">
         {[1, 2, 3].map((num, index) => (
           <div
             key={num}
@@ -102,7 +153,7 @@ const AmazingSection = () => {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
     </div>
   );
 };
