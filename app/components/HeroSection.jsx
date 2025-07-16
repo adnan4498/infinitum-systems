@@ -91,7 +91,7 @@ const HeroSection = () => {
           <div className="w-[59px] h-[59px] bg-[url('https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-04/XPqOcLZgnJ.png')] bg-cover bg-no-repeat absolute top-0 left-[53px] z-[22]" />
           <span className="flex w-[223px] h-[72px] justify-start items-start font-['Poppins'] text-[16px] font-normal leading-[24px] text-[#fff] absolute top-[84px] left-0 text-left overflow-hidden z-[23]">
             We craft bold ideas and <br />
-            smart designs that thrive in <br />a digital-first world.
+            smart designs that thrive in <br />a digital-firwwst world.
           </span>
         </div>
       </div>
@@ -108,7 +108,7 @@ const HeroSection = () => {
           Your browser does not support the video tag.
         </video>
 
-        <div className="absolute xl:bottom-[220px] 2xl:bottom-60 3xl:bottom-[260px] left-1/2 transform -translate-x-1/2 translate-y-1/4 z-20">
+        {/* <div className="absolute xl:bottom-[220px] 2xl:bottom-60 3xl:bottom-[260px] left-1/2 transform -translate-x-1/2 translate-y-1/4 z-20">
           <Image
             src="/hero-lady.png"
             alt="Hero Lady"
@@ -129,7 +129,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </>
   );
