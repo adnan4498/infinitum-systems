@@ -7,6 +7,8 @@ import circleIcon from "../../public/circle.svg";
 import ladyImg from "../../public/about-us-lady.png";
 import { DD } from "./DD";
 import { CardBody, CardContainer, CardItem } from "./ui/3d-card";
+import { GlareCard } from "./ui/glare-card";
+import logo from "../../public/logo.svg";
 // import { CardBody, CardContainer, CardItem } from "../ui/3d-card";
 
 const AnimatedAboutUsSection = () => {
@@ -34,43 +36,11 @@ const AnimatedAboutUsSection = () => {
         </div> */}
         {/* <DD /> */}
 
-        <CardContainer className="inter-var">
-          <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border  ">
-            <CardItem
-              translateZ="50"
-              className="text-xl font-bold text-neutral-600 dark:text-white"
-            >
-              Make things float in air
-            </CardItem>
-            <CardItem
-              as="p"
-              translateZ="60"
-              className="text-neutral-500 text-sm max-w-sm mt-2 dark:text-neutral-300"
-            >
-              Hover over this card to unleash the power of CSS perspective
-            </CardItem>
-          </CardBody>
-        </CardContainer>
-        
+        <GlareCard className="flex flex-col items-center justify-center">
+          <Image src={logo} alt="Infinitum Systems" width={200} height={200} />
+          {/* <p className="text-white font-bold text-xl mt-4">Infinitum Systems</p> */}
+        </GlareCard>
       </div>
-
-{/* 
-        <CardContainer className="inter-var">
-          <CardBody className="bg-gray-50 relative group/card  dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-[600px] h-auto rounded-xl p-6 border  ">
-            <CardItem
-              translateZ="100"
-              rotateX={20}
-              rotateZ={-10}
-              className="w-full mt-4"
-            >
-                <Image
-                  src="/about-us-lady.png"
-                  width={660}
-                  height={400}
-                />
-            </CardItem>
-          </CardBody>
-        </CardContainer> */}
 
       <div className="absolute right-[100px] top-[0px]">
         <Image src="/circle.svg" alt="About Us" width={157} height={157} />

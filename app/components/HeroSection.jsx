@@ -108,7 +108,7 @@ const HeroSection = () => {
           Your browser does not support the video tag.
         </video>
 
-        {/* <div className="absolute xl:bottom-[220px] 2xl:bottom-60 3xl:bottom-[260px] left-1/2 transform -translate-x-1/2 translate-y-1/4 z-20">
+        <div className="absolute xl:bottom-[220px] 2xl:bottom-60 3xl:bottom-[260px] left-1/2 transform -translate-x-1/2 translate-y-1/4 z-20">
           <Image
             src="/hero-lady.png"
             alt="Hero Lady"
@@ -129,7 +129,7 @@ const HeroSection = () => {
               </div>
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
     </>
   );
