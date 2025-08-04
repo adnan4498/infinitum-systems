@@ -11,23 +11,9 @@ import { HoverEffect } from "../components/ui/card-hover-effect";
 import { TypewriterEffect } from "../components/ui/typewriter-effect";
 import { CardBody, CardContainer, CardItem } from "../components/ui/3d-card";
 import { Button } from "../components/ui/moving-border";
+import benifitsImg from "../../public/benifits-img.png";
 
 export default function AboutPage() {
-  const words = [
-    {
-      text: "About",
-    },
-    {
-      text: "Infinitum",
-    },
-    {
-      text: "Systems",
-    },
-    {
-      text: ".",
-      className: "text-blue-500 dark:text-blue-500",
-    },
-  ];
 
   const storyWords = [
     {
@@ -132,7 +118,7 @@ export default function AboutPage() {
             <Navbar />
           </div>
 
-          {/* Hero Section - Similar to Home Page */}
+          {/* Hero Section - Only section with sparkles */}
           <section className="py-64 px-[108px] relative flex justify-between items-start">
             <div className="w-full absolute inset-0 h-screen">
               <SparklesCore
@@ -181,47 +167,59 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Video Section with Lady Image */}
-          {/* <section className="relative w-full h-[500px]">
-            <video
-              className="w-full h-full object-cover absolute -top-[60px] left-0 z-0"
-              autoPlay
-              muted
-              loop
-              playsInline
-            >
-              <source src="/hero-video.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
+          {/* Benefits Section - Your custom design */}
+          <section className="py-20 px-[108px] relative bg-gradient-to-b from-transparent to-white/5">
+            <div className="max-w-7xl mx-auto">
+              <div className="xl:flex gap-[28px] xl:justify-between 3xl:justify-around max-[1080px]:px-6 2xl:px-0">
+                <div>
+                  <div className="xl:text-[16px] 2xl:text-[20px] font-semibold">
+                    <span className="text-[#FFF]">Our</span>
+                    <span className="!text-[#46F0FF]"> Benefits</span>
+                  </div>
+                  <div className="xl:text-[42px] xl:font-extrabold xl:w-[520px] 2xl:text-[68px] 3xl:w-[800px] xl:mt-[15px] text-white">
+                    Smart benefits for your digital growth
+                  </div>
+                  <hr className="xl:w-[450px] 2xl:w-[550px] !text-[#454545] xl:mt-[24px] 2xl:mt-[34px]" />
 
-            <div className="absolute xl:bottom-[220px] 2xl:bottom-60 3xl:bottom-[260px] left-1/2 transform -translate-x-1/2 translate-y-1/4 z-20">
-              <Image
-                src="/about-us-lady.png"
-                alt="About Us Lady"
-                width={802}
-                height={802}
-                className="object-contain"
-              />
+                  <div className="xl:mt-[36px] xl:flex gap-[30px] max-[1080px]:flex-col">
+                    <div className="xl:flex flex-col gap-[40px] 2xl:gap-[50px]">
+                      <div>
+                        <div className="!text-[#42E1F1] xl:text-[16px] 2xl:text-[20px] font-semibold">
+                          Reliable Execution
+                        </div>
+                        <div className="text-[16px] 2xl:text-[18px] xl:mt-[10px] 2xl:mt-[15px] text-gray-300">
+                          Fresh ideas grounded in consistent delivery.
+                        </div>
+                      </div>
+                      <div>
+                        <div className="xl:text-[16px] 2xl:text-[20px] text-[#42E1F1] font-semibold">Strategic by Choice</div>
+                        <div className="text-[16px] 2xl:text-[18px] xl:mt-[10px] 2xl:mt-[15px] text-gray-300">
+                          A team fueled by curiosity and guided by smart decisions.
+                        </div>
+                      </div>
+                    </div>
+                  </div>
 
-              <div className="absolute left-full top-[200px] flex flex-col gap-6 text-start">
-                <div className="bg-[#00051C]/10 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/10 shadow-lg translate-y-1 -ml-4 w-[200px]">
-                  <div className="flex flex-col items-center">
-                    <div className="text-5xl font-bold text-white">50+</div>
-                    <div className="text-base font-normal text-white mt-1">PROJECTS</div>
+                  <div className="xl:w-[130px] xl:h-[38px] 2xl:w-[149px] 2xl:h-[41px] 3xl:w-[180px] 3xl:h-[50px] flex justify-center items-center rounded-full bg-[#01B2C1] text-white hover:bg-white hover:text-[#01B2C1] transition-colors duration-300 cursor-pointer mt-8">
+                    <div className="text-sm 2xl:text-sm 3xl:text-base font-semibold">Read More</div>
                   </div>
                 </div>
 
-                <div className="mt-6 text-start bg-[#00051C]/10 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/10 shadow-lg -translate-y-1 w-[260px] text-white">
-                  <div className="text-5xl font-bold">98%</div>
-                  <div className="text-base font-normal mt-1">
-                    CLIENT SATISFACTION
+                <div className="relative mt-12 xl:mt-0 1280:w-[600px] 2xl:w-[707px] 2xl:h-[609px]">
+                  <div>
+                    <Image src={benifitsImg} width={707} height={609} alt="Benefits image" />
+                  </div>
+                  <div className="absolute">
+                    <button className="bg-[#01B2C1] cursor-pointer xl:text-[16px] 2xl:text-xl 2xl:w-auto px-4 h-10 absolute top-[-520px] left-[300px] xl:top-[-515px] xl:left-[330px] 2xl:left-[373px] 2xl:top-[-590px] 3xl:top-[-600px] 3xl:left-[383px] rounded-3xl font-medium whitespace-nowrap shadow-md hover:bg-white hover:!text-[#01B2C1] transition duration-300 text-white">
+                      Innovative Thinking
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
-          </section> */}
+          </section>
 
-          {/* Our Story Section */}
+          {/* Our Story Section - No sparkles */}
           <section className="py-20 relative">
             <div className="max-w-6xl mx-auto px-5">
               <div className="text-center mb-16">
@@ -237,14 +235,6 @@ export default function AboutPage() {
                     words="Founded with a vision to bridge the gap between imagination and digital reality, Infinitum Systems emerged from a passion for creating transformative digital experiences. We began as a small team of innovators who believed that technology should not just function—it should inspire."
                     className="text-gray-300 leading-relaxed"
                   />
-                  {/* <TextGenerateEffect 
-                    words="Today, we stand at the forefront of digital innovation, combining cutting-edge technology with creative excellence to deliver solutions that don't just meet expectations—they exceed them. Our journey is driven by an unwavering commitment to pushing boundaries and exploring the infinite possibilities of the digital world."
-                    className="text-lg text-gray-300 leading-relaxed"
-                  />
-                  <TextGenerateEffect 
-                    words="Every project we undertake is a testament to our belief that great design and robust technology can work hand in hand to create experiences that are both beautiful and powerful."
-                    className="text-lg text-gray-300 leading-relaxed"
-                  /> */}
                 </div>
                 <CardContainer className="inter-var">
                   <CardBody className="bg-gray-900/50 relative group/card dark:hover:shadow-2xl dark:hover:shadow-emerald-500/[0.1] dark:bg-black dark:border-white/[0.2] border-black/[0.1] w-auto sm:w-[30rem] h-auto rounded-xl p-6 border">
@@ -270,19 +260,8 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Our Mission Section */}
+          {/* Our Mission Section - No sparkles */}
           <section className="py-20 bg-white/5 relative overflow-hidden">
-            <div className="w-full absolute inset-0 h-screen">
-              <SparklesCore
-                id="tsparticlesmission"
-                background="transparent"
-                minSize={0.6}
-                maxSize={1.4}
-                particleDensity={50}
-                className="w-full h-full"
-                particleColor="#01b2c1"
-              />
-            </div>
             <div className="max-w-6xl mx-auto px-5 relative z-10">
               <div className="text-center mb-16">
                 <TypewriterEffect
@@ -295,7 +274,7 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Our Team Section */}
+          {/* Our Team Section - No sparkles */}
           <section className="py-20 relative">
             <div className="max-w-6xl mx-auto px-5">
               <div className="text-center mb-16">
@@ -334,19 +313,8 @@ export default function AboutPage() {
             </div>
           </section>
 
-          {/* Call to Action Section */}
+          {/* Call to Action Section - No sparkles */}
           <section className="py-20 bg-gradient-to-r from-blue-500/10 to-purple-500/10 relative overflow-hidden">
-            <div className="w-full absolute inset-0 h-screen">
-              <SparklesCore
-                id="tsparticlescta"
-                background="transparent"
-                minSize={0.6}
-                maxSize={1.4}
-                particleDensity={30}
-                className="w-full h-full"
-                particleColor="#01b2c1"
-              />
-            </div>
             <div className="max-w-4xl mx-auto px-5 text-center relative z-10">
               <h2 className="text-4xl font-bold mb-6 bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
                 Ready to Start Your Project?
