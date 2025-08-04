@@ -2,16 +2,17 @@
 import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { Button } from "./ui/moving-border";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  const handleItemClick = (item) => {
-    setActiveItem(item);
+  const handleItemClick = () => {
     setIsMenuOpen(false);
   };
 
@@ -27,7 +28,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navItems = ["Home", "About Us", "What We do", "Testimonial"];
+
 
   return (
     <nav
@@ -39,13 +40,15 @@ const Navbar = () => {
     >
       <div className="max-w-screen-xl 3xl:max-w-[1600px] flex flex-wrap items-center justify-between">
         <div className="flex items-center">
-          <Image
-            src="/logo.svg"
-            className="h-12 md:h-16 3xl:h-20 ml-1"
-            alt="Logo"
-            width={180}
-            height={16}
-          />
+          <Link href="/">
+            <Image
+              src="/logo.svg"
+              className="h-12 md:h-16 3xl:h-20 ml-1"
+              alt="Logo"
+              width={180}
+              height={16}
+            />
+          </Link>
         </div>
 
         <div className="flex md:order-2">
@@ -105,19 +108,48 @@ const Navbar = () => {
         </div>
 
         <div className="hidden cursor-pointer md:flex justify-center gap-[64px] 3xl:gap-[96px] text-base 3xl:text-lg font-light group">
-          {navItems.map((item) => (
-            <div
-              key={item}
-              className={`transition-colors duration-300 ${
-                activeItem === item
-                  ? "text-[#46F0FF]"
-                  : "text-white hover:!text-[#46F0FF]"
-              }`}
-              onClick={() => handleItemClick(item)}
-            >
-              {item}
-            </div>
-          ))}
+          <Link
+            href="/"
+            className={`transition-colors duration-300 ${
+              pathname === "/"
+                ? "text-[#46F0FF]"
+                : "text-white hover:!text-[#46F0FF]"
+            }`}
+            onClick={handleItemClick}
+          >
+            Home
+          </Link>
+          <Link
+            href="/about"
+            className={`transition-colors duration-300 ${
+              pathname === "/about"
+                ? "text-[#46F0FF]"
+                : "text-white hover:!text-[#46F0FF]"
+            }`}
+            onClick={handleItemClick}
+          >
+            About Us
+          </Link>
+          <div
+            className={`transition-colors duration-300 ${
+              pathname === "/#what-we-do"
+                ? "text-[#46F0FF]"
+                : "text-white hover:!text-[#46F0FF]"
+            }`}
+            onClick={handleItemClick}
+          >
+            What We do
+          </div>
+          <div
+            className={`transition-colors duration-300 ${
+              pathname === "/#testimonial"
+                ? "text-[#46F0FF]"
+                : "text-white hover:!text-[#46F0FF]"
+            }`}
+            onClick={handleItemClick}
+          >
+            Testimonial
+          </div>
         </div>
       </div>
 
@@ -151,28 +183,86 @@ const Navbar = () => {
           </div>
 
           <ul className="flex flex-col items-center space-y-8 w-full max-w-xs">
-            {navItems.map((item) => (
-              <li key={item} className="w-full">
-                <a
-                  href="#"
-                  onClick={() => handleItemClick(item)}
-                  className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
-                    activeItem === item
-                      ? "text-[#01B2C1]"
-                      : "text-white hover:text-[#01B2C1]"
+            <li className="w-full">
+              <Link
+                href="/"
+                onClick={handleItemClick}
+                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
+                  pathname === "/"
+                    ? "text-[#01B2C1]"
+                    : "text-white hover:text-[#01B2C1]"
+                }`}
+              >
+                Home
+                <span
+                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
+                    pathname === "/"
+                      ? "bg-[#01B2C1] scale-x-100"
+                      : "bg-white scale-x-0 group-hover:scale-x-100"
                   }`}
-                >
-                  {item}
-                  <span
-                    className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
-                      activeItem === item
-                        ? "bg-[#01B2C1] scale-x-100"
-                        : "bg-white scale-x-0 group-hover:scale-x-100"
-                    }`}
-                  ></span>
-                </a>
-              </li>
-            ))}
+                ></span>
+              </Link>
+            </li>
+            <li className="w-full">
+              <Link
+                href="/about"
+                onClick={handleItemClick}
+                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
+                  pathname === "/about"
+                    ? "text-[#01B2C1]"
+                    : "text-white hover:text-[#01B2C1]"
+                }`}
+              >
+                About Us
+                <span
+                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
+                    pathname === "/about"
+                      ? "bg-[#01B2C1] scale-x-100"
+                      : "bg-white scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </Link>
+            </li>
+            <li className="w-full">
+              <a
+                href="#"
+                onClick={handleItemClick}
+                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
+                  pathname === "/#what-we-do"
+                    ? "text-[#01B2C1]"
+                    : "text-white hover:text-[#01B2C1]"
+                }`}
+              >
+                What We do
+                <span
+                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
+                    pathname === "/#what-we-do"
+                      ? "bg-[#01B2C1] scale-x-100"
+                      : "bg-white scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
+            <li className="w-full">
+              <a
+                href="#"
+                onClick={handleItemClick}
+                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
+                  pathname === "/#testimonial"
+                    ? "text-[#01B2C1]"
+                    : "text-white hover:text-[#01B2C1]"
+                }`}
+              >
+                Testimonial
+                <span
+                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
+                    pathname === "/#testimonial"
+                      ? "bg-[#01B2C1] scale-x-100"
+                      : "bg-white scale-x-0 group-hover:scale-x-100"
+                  }`}
+                ></span>
+              </a>
+            </li>
           </ul>
 
           <div className="mt-12">
