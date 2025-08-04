@@ -1,5 +1,6 @@
 "use client";
 import React from "react";
+import Image from "next/image";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import SmoothScrollProvider from "../smooth-scroll-provider";
@@ -70,19 +71,22 @@ export default function AboutPage() {
   const missionCards = [
     {
       title: "Innovation First",
-      description: "We embrace cutting-edge technologies and methodologies to deliver solutions that are ahead of their time, ensuring our clients stay competitive in an ever-evolving digital landscape.",
+      description:
+        "We embrace cutting-edge technologies and methodologies to deliver solutions that are ahead of their time, ensuring our clients stay competitive in an ever-evolving digital landscape.",
       icon: "🚀",
       link: "#",
     },
     {
       title: "Quality Excellence",
-      description: "Every line of code, every design element, and every user interaction is crafted with meticulous attention to detail, ensuring flawless execution and exceptional performance.",
+      description:
+        "Every line of code, every design element, and every user interaction is crafted with meticulous attention to detail, ensuring flawless execution and exceptional performance.",
       icon: "💎",
       link: "#",
     },
     {
       title: "Client Success",
-      description: "Your success is our success. We partner with our clients to understand their unique challenges and deliver customized solutions that drive real business results.",
+      description:
+        "Your success is our success. We partner with our clients to understand their unique challenges and deliver customized solutions that drive real business results.",
       icon: "🌟",
       link: "#",
     },
@@ -127,9 +131,9 @@ export default function AboutPage() {
           <div>
             <Navbar />
           </div>
-          
-          {/* Header with Sparkles */}
-          <section className="pt-32 pb-20 text-center relative overflow-hidden">
+
+          {/* Hero Section - Similar to Home Page */}
+          <section className="py-64 px-[108px] relative flex justify-between items-start">
             <div className="w-full absolute inset-0 h-screen">
               <SparklesCore
                 id="tsparticlesfullpage"
@@ -141,37 +145,95 @@ export default function AboutPage() {
                 particleColor="#01b2c1"
               />
             </div>
-            <div className="max-w-6xl mx-auto px-5 relative z-10">
-              <div className="mb-8">
-                <TypewriterEffect words={words} className="text-4xl md:text-6xl font-bold" />
-              </div>
-              <TextGenerateEffect 
-                words="Pioneering the future of digital innovation through cutting-edge technology and creative excellence"
-                className="text-xl text-white max-w-3xl mx-auto leading-relaxed"
-              />
-              <div className="mt-12">
+            <div className="relative z-10">
+              <h1 className="text-7xl font-extrabold text-white uppercase">
+                About{" "}
+                <span className="!text-[#46F0FF]">
+                  Infinitum
+                </span>
+                <br />
+                Systems <br /> 
+                <span className="text-5xl">Pioneering Digital Innovation</span>
+              </h1>
+              <p className="text-xl text-gray-300 mt-6 max-w-2xl leading-relaxed">
+                We craft bold ideas and smart designs that thrive in a digital-first world, 
+                combining cutting-edge technology with creative excellence.
+              </p>
+              <div className="mt-8">
                 <Button
                   className="font-semibold text-lg cursor-pointer"
                   containerClassName="inline-block"
                   borderRadius="9999px"
                   duration={3000}
                 >
-                  Get In Touch
+                  Let's Talk
                 </Button>
               </div>
             </div>
+
+            <div className="relative pl-72 w-[223px] z-10">
+              <div className="w-[59px] h-[59px] bg-[url('https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-04/BuRidrCEDW.png')] bg-cover bg-no-repeat absolute top-0 left-0 z-[13]" />
+              <div className="w-[59px] h-[59px] bg-[url('https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-06-04/XPqOcLZgnJ.png')] bg-cover bg-no-repeat absolute top-0 left-[53px] z-[22]" />
+              <span className="flex w-[223px] h-[72px] justify-start items-start font-['Poppins'] text-[16px] font-normal leading-[24px] text-[#fff] absolute top-[84px] left-0 text-left overflow-hidden z-[23]">
+                We bridge the gap between <br />
+                imagination and digital <br />reality with passion.
+              </span>
+            </div>
           </section>
+
+          {/* Video Section with Lady Image */}
+          {/* <section className="relative w-full h-[500px]">
+            <video
+              className="w-full h-full object-cover absolute -top-[60px] left-0 z-0"
+              autoPlay
+              muted
+              loop
+              playsInline
+            >
+              <source src="/hero-video.mp4" type="video/mp4" />
+              Your browser does not support the video tag.
+            </video>
+
+            <div className="absolute xl:bottom-[220px] 2xl:bottom-60 3xl:bottom-[260px] left-1/2 transform -translate-x-1/2 translate-y-1/4 z-20">
+              <Image
+                src="/about-us-lady.png"
+                alt="About Us Lady"
+                width={802}
+                height={802}
+                className="object-contain"
+              />
+
+              <div className="absolute left-full top-[200px] flex flex-col gap-6 text-start">
+                <div className="bg-[#00051C]/10 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/10 shadow-lg translate-y-1 -ml-4 w-[200px]">
+                  <div className="flex flex-col items-center">
+                    <div className="text-5xl font-bold text-white">50+</div>
+                    <div className="text-base font-normal text-white mt-1">PROJECTS</div>
+                  </div>
+                </div>
+
+                <div className="mt-6 text-start bg-[#00051C]/10 backdrop-blur-md rounded-2xl px-6 py-4 border border-white/10 shadow-lg -translate-y-1 w-[260px] text-white">
+                  <div className="text-5xl font-bold">98%</div>
+                  <div className="text-base font-normal mt-1">
+                    CLIENT SATISFACTION
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section> */}
 
           {/* Our Story Section */}
           <section className="py-20 relative">
             <div className="max-w-6xl mx-auto px-5">
               <div className="text-center mb-16">
-                <TypewriterEffect words={storyWords} className="text-4xl font-semibold" />
+                <TypewriterEffect
+                  words={storyWords}
+                  className="text-4xl font-semibold"
+                />
                 <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mt-4"></div>
               </div>
               <div className="grid md:grid-cols-2 gap-16 items-center">
                 <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
-                  <TextGenerateEffect 
+                  <TextGenerateEffect
                     words="Founded with a vision to bridge the gap between imagination and digital reality, Infinitum Systems emerged from a passion for creating transformative digital experiences. We began as a small team of innovators who believed that technology should not just function—it should inspire."
                     className="text-gray-300 leading-relaxed"
                   />
@@ -223,7 +285,10 @@ export default function AboutPage() {
             </div>
             <div className="max-w-6xl mx-auto px-5 relative z-10">
               <div className="text-center mb-16">
-                <TypewriterEffect words={missionWords} className="text-4xl font-semibold" />
+                <TypewriterEffect
+                  words={missionWords}
+                  className="text-4xl font-semibold"
+                />
                 <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mt-4"></div>
               </div>
               <HoverEffect items={missionCards} />
@@ -234,24 +299,34 @@ export default function AboutPage() {
           <section className="py-20 relative">
             <div className="max-w-6xl mx-auto px-5">
               <div className="text-center mb-16">
-                <TypewriterEffect words={teamWords} className="text-4xl font-semibold" />
+                <TypewriterEffect
+                  words={teamWords}
+                  className="text-4xl font-semibold"
+                />
                 <div className="w-16 h-1 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full mx-auto mt-4"></div>
               </div>
               <div className="text-center max-w-3xl mx-auto mb-16">
-                <TextGenerateEffect 
+                <TextGenerateEffect
                   words="Behind every great project is a team of passionate professionals. Our diverse group of developers, designers, and strategists brings together years of experience, creative vision, and technical expertise to turn your ideas into digital reality."
                   className="text-lg text-gray-300 leading-relaxed"
                 />
               </div>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {teamStats.map((stat, index) => (
-                  <BackgroundGradient key={index} className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 group">
+                  <BackgroundGradient
+                    key={index}
+                    className="rounded-[22px] max-w-sm p-4 sm:p-10 bg-white dark:bg-zinc-900 group"
+                  >
                     <div className="text-center">
                       <div className="text-4xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent mb-2">
                         {stat.number}
                       </div>
-                      <div className="text-gray-300 font-semibold mb-2">{stat.label}</div>
-                      <div className="text-gray-400 text-sm">{stat.description}</div>
+                      <div className="text-gray-300 font-semibold mb-2">
+                        {stat.label}
+                      </div>
+                      <div className="text-gray-400 text-sm">
+                        {stat.description}
+                      </div>
                     </div>
                   </BackgroundGradient>
                 ))}
@@ -277,7 +352,8 @@ export default function AboutPage() {
                 Ready to Start Your Project?
               </h2>
               <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
-                Let's work together to bring your vision to life with cutting-edge technology and creative excellence.
+                Let's work together to bring your vision to life with
+                cutting-edge technology and creative excellence.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button
@@ -307,4 +383,4 @@ export default function AboutPage() {
       </SmoothScrollProvider>
     </>
   );
-} 
+}
