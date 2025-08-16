@@ -22,7 +22,7 @@ import kaiserImg from "../public/kaiser-img.png";
 import HBOimg from "../public/hbo-img.png";
 import zenSilkImg from "../public/silk-zen-img.png";
 import { UltimateDevelopmentSection } from "./components/UltimateDevelopmentSection";
-import {DD} from "./components/DD";
+import { DD } from "./components/DD";
 
 export default function Home() {
   const images = [
@@ -81,14 +81,9 @@ export default function Home() {
           <div>
             <Navbar />
           </div>
-          <div>
+           <div className="lg:pt-0 pt-10">
             <HeroSection />
           </div>
-
-          
-          {/* <div>
-            <LogoCarousel />
-          </div> */}
 
           <div className="py-20">
             <BuildWebsitesSection />
@@ -98,26 +93,22 @@ export default function Home() {
             <UltimateDevelopmentSection />
           </div>
 
-
-          <div className="mt-[141px]">
+          <div className="mt-[90px] lg:mt-[141px]">
             <AnimatedAboutUsSection />
           </div>
 
-          <div className="mt-[100px] px-[108px] 1280:px-[40px]">
+          <div className="mt-[60px] lg:mt-[100px] lg:px-[108px] 1280:px-[40px]">
             <ServicesSection />
           </div>
 
-          <div className="2xl:px-[84px] 1280:px-[40px] mt-[350px]">
+          <div className="2xl:px-[84px] 1280:px-[40px] lg:mt-[350px] mt-[200px]">
             <BenifitsSection />
           </div>
 
           <div className="2xl:px-[84px] py-44 1280:px-[40px]">
             <AmazingSection />
           </div>
-
-          {/* <div className="py-20 cursor-pointer">
-            <ThreeDMarquee images={images} />
-          </div> */}
+          {/*
 
           <div className="">
             <PricingSection />
@@ -132,11 +123,7 @@ export default function Home() {
 
           <div className="2xl:px-[84px] py-44  1280:px-[40px]">
             <Footer />
-          </div>
-
-          {/* <div className="my-60 py-60">
-        <GlowingCard />
-      </div> */}
+          </div> */}
         </div>
       </SmoothScrollProvider>
     </>

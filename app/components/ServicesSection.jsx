@@ -4,7 +4,6 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
-import heroLadyImg from "../../public/hero-lady.png";
 import { SparklesCore } from "./ui/sparkles";
 
 const services = [
@@ -93,21 +92,31 @@ const ServiceCards = () => {
   return (
     <div className="bg-[#00051C] w-full m-0 p-0">
       <div className="w-full px-4 pt-0">
-        <p className="text-white font-bold text-center text-xl mt-0">
+        <p className="text-white font-bold text-center text-lg sm:text-xl mt-0">
           What we <span className="!text-sky-300"> do </span>
         </p>
-        <p className="text-white font-extrabold text-center text-[48px] py-6">
-          Transforming ideas <br /> into visually stunning realities
+        <p className="text-white font-extrabold text-center text-2xl sm:text-[48px] py-6 leading-snug sm:leading-tight">
+          Transforming ideas <br className="hidden sm:block" /> into visually
+          stunning realities
         </p>
       </div>
 
-      <div className="flex justify-center w-full mt-[38px]">
-        <div className="flex max-w-[1600px] w-full gap-y-20 gap-x-10 px-4">
+      <div className="flex justify-center w-full mt-6 sm:mt-[38px]">
+        <div
+          className="
+            flex flex-col sm:flex-row sm:flex-wrap 
+            max-w-[1600px] w-full 
+            gap-y-36 sm:gap-y-20 gap-x-0 sm:gap-x-10 px-4 items-center sm:items-start
+          "
+        >
           {services.map((service, index) => (
             <div
               key={index}
               ref={(el) => (cardRefs.current[index] = el)}
-              className="relative w-[480px] cursor-pointer"
+              className="
+                relative 
+                w-full sm:w-[480px] cursor-pointer
+              "
             >
               <div className="bg-[#0A0F2C] rounded-2xl overflow-hidden shadow-xl relative z-10">
                 <div className="relative overflow-hidden">
@@ -117,7 +126,7 @@ const ServiceCards = () => {
                     alt={service.title}
                     width={480}
                     height={440}
-                    className="object-cover w-full h-[440px]"
+                    className="object-cover w-full h-[340px] sm:h-[440px]"
                   />
 
                   <SparklesCore
@@ -129,8 +138,8 @@ const ServiceCards = () => {
                     particleColor="#00FFFF"
                   />
 
-                  <div className="absolute top-6 left-6 z-30">
-                    <h2 className="text-white text-xl font-bold tracking-wide">
+                  <div className="absolute top-4 sm:top-6 left-4 sm:left-6 z-30">
+                    <h2 className="text-white text-lg sm:text-xl font-bold tracking-wide">
                       {service.title}
                     </h2>
                   </div>
@@ -140,9 +149,9 @@ const ServiceCards = () => {
                     className="absolute top-0 right-3 opacity-0"
                   >
                     <div className="relative">
-                      <div className="absolute -inset-4 bg-[#00051C] w-36 h-24 rounded-full rotate-[1deg]" />
-                      <div className="bg-cyan-400 rounded-full p-4 w-16 h-16 flex items-center justify-center shadow-md rotate-[-15deg]">
-                        <ArrowUpRight className="text-white" size={28} />
+                      <div className="absolute -inset-4 bg-[#00051C] w-28 sm:w-36 h-20 sm:h-24 rounded-full rotate-[1deg]" />
+                      <div className="bg-cyan-400 rounded-full p-3 sm:p-4 w-14 sm:w-16 h-14 sm:h-16 flex items-center justify-center shadow-md rotate-[-15deg]">
+                        <ArrowUpRight className="text-white" size={24} />
                       </div>
                     </div>
                   </div>
@@ -151,12 +160,12 @@ const ServiceCards = () => {
 
               <div
                 ref={(el) => (textRefs.current[index] = el)}
-                className="absolute left-0 w-full opacity-0 mt-[30px]"
+                className="absolute left-0 w-full opacity-0 mt-10 sm:mt-[30px] text-center sm:text-left"
               >
-                <h3 className="text-white text-2xl font-semibold mb-2">
+                <h3 className="text-white text-lg sm:text-2xl font-semibold mb-2">
                   {service.title}
                 </h3>
-                <p className="text-gray-400 text-lg leading-relaxed w-[370px]">
+                <p className="text-gray-400  text-sm sm:text-lg leading-relaxed w-full sm:w-[370px] mx-auto sm:mx-0">
                   {service.desc}
                 </p>
               </div>

@@ -8,34 +8,33 @@ import { usePathname } from "next/navigation";
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(false);
   const pathname = usePathname();
 
-  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  useEffect(() => {
+    setMounted(true);
+    const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  const handleItemClick = () => {
-    setIsMenuOpen(false);
-  };
+  const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const handleItemClick = () => setIsMenuOpen(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      if (window.scrollY > 10) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
-    };
+    const handleScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-
+  const isActive = (path) => mounted && pathname === path;
 
   return (
     <nav
-      className={`py-8 md:py-10 px-[108px] 3xl:px-[s] fixed w-full z-50 top-0 start-0 transition-all duration-300 ${
-        scrolled
-          ? "bg-[#00051C]/60 backdrop-blur-xl shadow-md "
-          : "bg-transparent"
+      className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-8 lg:px-[108px] fixed w-full z-50 top-0 start-0 transition-all duration-300 ${
+        scrolled ? "bg-[#00051C]/60 backdrop-blur-xl shadow-md" : "bg-transparent"
       }`}
     >
       <div className="max-w-screen-xl 3xl:max-w-[1600px] flex flex-wrap items-center justify-between">
@@ -43,7 +42,7 @@ const Navbar = () => {
           <Link href="/">
             <Image
               src="/logo.svg"
-              className="h-12 md:h-16 3xl:h-20 ml-1"
+              className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto ml-1"
               alt="Logo"
               width={180}
               height={16}
@@ -52,22 +51,16 @@ const Navbar = () => {
         </div>
 
         <div className="flex md:order-2">
-          {/* <button
-            type="button"
-            className="hidden md:inline-block bg-[#01b2c1] text-white hover:bg-white hover:!text-[#01b2c1] cursor-pointer px-6 py-2 3xl:px-8 3xl:py-3 rounded-full font-semibold text-base 3xl:text-lg transition duration-300"
-          >
-            Get started
-          </button> */}
-
-          <Button
-            // className="font-semibold text-base 3xl:text-lg px-6 py-2 3xl:px-8 3xl:py-3"
-            className="font-semibold text-lg cursor-pointer"
-            containerClassName="hidden md:inline-block"
-            borderRadius="9999px"
-            duration={3000}
-          >
-            Get started
-          </Button>
+          {mounted && isDesktop && (
+            <Button
+              className="font-semibold text-base sm:text-lg cursor-pointer"
+              containerClassName="inline-block"
+              borderRadius="9999px"
+              duration={3000}
+            >
+              Get started
+            </Button>
+          )}
           <button
             onClick={toggleMenu}
             type="button"
@@ -76,202 +69,44 @@ const Navbar = () => {
             aria-expanded={isMenuOpen}
           >
             {isMenuOpen ? (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             ) : (
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
+              <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             )}
           </button>
         </div>
 
-        <div className="hidden cursor-pointer md:flex justify-center gap-[64px] 3xl:gap-[96px] text-base 3xl:text-lg font-light group">
-          <Link
-            href="/"
-            className={`transition-colors duration-300 ${
-              pathname === "/"
-                ? "text-[#46F0FF]"
-                : "text-white hover:!text-[#46F0FF]"
-            }`}
-            onClick={handleItemClick}
-          >
-            Home
-          </Link>
-          <Link
-            href="/about"
-            className={`transition-colors duration-300 ${
-              pathname === "/about"
-                ? "text-[#46F0FF]"
-                : "text-white hover:!text-[#46F0FF]"
-            }`}
-            onClick={handleItemClick}
-          >
-            About Us
-          </Link>
-          <div
-            className={`transition-colors duration-300 ${
-              pathname === "/#what-we-do"
-                ? "text-[#46F0FF]"
-                : "text-white hover:!text-[#46F0FF]"
-            }`}
-            onClick={handleItemClick}
-          >
-            What We do
-          </div>
-          <div
-            className={`transition-colors duration-300 ${
-              pathname === "/#testimonial"
-                ? "text-[#46F0FF]"
-                : "text-white hover:!text-[#46F0FF]"
-            }`}
-            onClick={handleItemClick}
-          >
-            Testimonial
-          </div>
+        <div className="hidden cursor-pointer md:flex justify-center gap-6 lg:gap-[64px] 3xl:gap-[96px] text-sm sm:text-base lg:text-lg font-light group">
+          <Link href="/" className={`transition-colors duration-300 ${isActive("/") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>Home</Link>
+          <Link href="/about" className={`transition-colors duration-300 ${isActive("/about") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>About Us</Link>
+          <Link href="/#what-we-do" className={`transition-colors duration-300 ${isActive("/#what-we-do") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>What We do</Link>
+          <Link href="/testimonial" className={`transition-colors duration-300 ${isActive("/testimonial") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>Testimonial</Link>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      <div
-        className={`fixed inset-0 z-40 bg-black bg-opacity-90 transition-all duration-300 transform ${
-          isMenuOpen ? "translate-y-0" : "-translate-y-full"
-        } md:hidden`}
-      >
-        <div className="flex flex-col items-center justify-center h-full pt-16 pb-24">
+      <div className={`fixed inset-0 z-40 bg-black bg-opacity-90 transition-all duration-300 transform ${isMenuOpen ? "translate-y-0" : "-translate-y-full"} md:hidden overflow-y-auto`}>
+        <div className="flex flex-col items-center justify-center h-full pt-16 pb-24 px-6">
           <div className="absolute top-6 right-6">
-            <button
-              onClick={toggleMenu}
-              className="text-white p-2 rounded-full hover:bg-white hover:text-[#01B2C1] transition duration-300"
-              aria-label="Close menu"
-            >
-              <svg
-                className="w-8 h-8"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+            <button onClick={toggleMenu} className="text-white p-2 rounded-full hover:bg-white hover:text-[#01B2C1] transition duration-300" aria-label="Close menu">
+              <svg className="w-8 h-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
 
-          <ul className="flex flex-col items-center space-y-8 w-full max-w-xs">
-            <li className="w-full">
-              <Link
-                href="/"
-                onClick={handleItemClick}
-                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
-                  pathname === "/"
-                    ? "text-[#01B2C1]"
-                    : "text-white hover:text-[#01B2C1]"
-                }`}
-              >
-                Home
-                <span
-                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
-                    pathname === "/"
-                      ? "bg-[#01B2C1] scale-x-100"
-                      : "bg-white scale-x-0 group-hover:scale-x-100"
-                  }`}
-                ></span>
-              </Link>
-            </li>
-            <li className="w-full">
-              <Link
-                href="/about"
-                onClick={handleItemClick}
-                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
-                  pathname === "/about"
-                    ? "text-[#01B2C1]"
-                    : "text-white hover:text-[#01B2C1]"
-                }`}
-              >
-                About Us
-                <span
-                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
-                    pathname === "/about"
-                      ? "bg-[#01B2C1] scale-x-100"
-                      : "bg-white scale-x-0 group-hover:scale-x-100"
-                  }`}
-                ></span>
-              </Link>
-            </li>
-            <li className="w-full">
-              <a
-                href="#"
-                onClick={handleItemClick}
-                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
-                  pathname === "/#what-we-do"
-                    ? "text-[#01B2C1]"
-                    : "text-white hover:text-[#01B2C1]"
-                }`}
-              >
-                What We do
-                <span
-                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
-                    pathname === "/#what-we-do"
-                      ? "bg-[#01B2C1] scale-x-100"
-                      : "bg-white scale-x-0 group-hover:scale-x-100"
-                  }`}
-                ></span>
-              </a>
-            </li>
-            <li className="w-full">
-              <a
-                href="#"
-                onClick={handleItemClick}
-                className={`block py-3 text-center text-xl 3xl:text-2xl relative font-extralight transition-all duration-300 ${
-                  pathname === "/#testimonial"
-                    ? "text-[#01B2C1]"
-                    : "text-white hover:text-[#01B2C1]"
-                }`}
-              >
-                Testimonial
-                <span
-                  className={`absolute bottom-2 left-1/4 w-1/2 h-px transition-all duration-300 ${
-                    pathname === "/#testimonial"
-                      ? "bg-[#01B2C1] scale-x-100"
-                      : "bg-white scale-x-0 group-hover:scale-x-100"
-                  }`}
-                ></span>
-              </a>
-            </li>
+          <ul className="flex flex-col items-center space-y-6 w-full max-w-xs">
+            <li><Link href="/" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>Home</Link></li>
+            <li><Link href="/about" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/about") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>About Us</Link></li>
+            <li><Link href="/#what-we-do" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/#what-we-do") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>What We do</Link></li>
+            <li><Link href="/testimonial" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/testimonial") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>Testimonial</Link></li>
           </ul>
 
-          <div className="mt-12">
-            <button
-              type="button"
-              className="bg-[#01B2C1] text-white px-8 py-3 3xl:px-10 3xl:py-4 3xl:text-xl rounded-full font-semibold hover:bg-white hover:text-[#01B2C1] transition duration-300"
-            >
-              Get started
-            </button>
+          <div className="mt-10">
+            <button type="button" className="bg-[#01B2C1] text-white px-6 py-3 sm:px-8 sm:py-4 sm:text-lg rounded-full font-semibold hover:bg-white hover:text-[#01B2C1] transition duration-300">Get started</button>
           </div>
         </div>
       </div>
@@ -280,3 +115,137 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+
+
+
+
+
+
+
+// "use client";
+// import Image from "next/image";
+// import React, { useState, useEffect } from "react";
+// import { Button } from "./ui/moving-border";
+// import Link from "next/link";
+// import { usePathname } from "next/navigation";
+// import { Drawer } from "antd"; // ✅ Added import
+
+// const Navbar = () => {
+//   const [isMenuOpen, setIsMenuOpen] = useState(false);
+//   const [scrolled, setScrolled] = useState(false);
+//   const [mounted, setMounted] = useState(false);
+//   const [isDesktop, setIsDesktop] = useState(false);
+//   const pathname = usePathname();
+
+//   useEffect(() => {
+//     setMounted(true);
+//     const handleResize = () => setIsDesktop(window.innerWidth >= 768);
+//     handleResize();
+//     window.addEventListener("resize", handleResize);
+//     return () => window.removeEventListener("resize", handleResize);
+//   }, []);
+
+//   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+//   const handleItemClick = () => setIsMenuOpen(false);
+
+//   useEffect(() => {
+//     const handleScroll = () => setScrolled(window.scrollY > 10);
+//     window.addEventListener("scroll", handleScroll);
+//     return () => window.removeEventListener("scroll", handleScroll);
+//   }, []);
+
+//   const isActive = (path) => mounted && pathname === path;
+
+//   return (
+//     <nav
+//       className={`py-6 sm:py-8 lg:py-10 px-4 sm:px-8 lg:px-[108px] fixed w-full z-50 top-0 start-0 transition-all duration-300 ${
+//         scrolled ? "bg-[#00051C]/60 backdrop-blur-xl shadow-md" : "bg-transparent"
+//       }`}
+//     >
+//       <div className="max-w-screen-xl 3xl:max-w-[1600px] flex flex-wrap items-center justify-between">
+//         {/* Logo */}
+//         <div className="flex items-center">
+//           <Link href="/">
+//             <Image
+//               src="/logo.svg"
+//               className="h-10 sm:h-12 md:h-16 lg:h-20 w-auto ml-1"
+//               alt="Logo"
+//               width={180}
+//               height={16}
+//             />
+//           </Link>
+//         </div>
+
+//         {/* Right side buttons */}
+//         <div className="flex md:order-2">
+//           {mounted && isDesktop && (
+//             <Button
+//               className="font-semibold text-base sm:text-lg cursor-pointer"
+//               containerClassName="inline-block"
+//               borderRadius="9999px"
+//               duration={3000}
+//             >
+//               Get started
+//             </Button>
+//           )}
+//           <button
+//             onClick={toggleMenu}
+//             type="button"
+//             className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-white rounded-lg md:hidden focus:outline-none"
+//             aria-label="Toggle menu"
+//             aria-expanded={isMenuOpen}
+//           >
+//             {isMenuOpen ? (
+//               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+//               </svg>
+//             ) : (
+//               <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+//                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+//               </svg>
+//             )}
+//           </button>
+//         </div>
+
+//         {/* Desktop Menu */}
+//         <div className="hidden cursor-pointer md:flex justify-center gap-6 lg:gap-[64px] 3xl:gap-[96px] text-sm sm:text-base lg:text-lg font-light group">
+//           <Link href="/" className={`transition-colors duration-300 ${isActive("/") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>Home</Link>
+//           <Link href="/about" className={`transition-colors duration-300 ${isActive("/about") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>About Us</Link>
+//           <Link href="/#what-we-do" className={`transition-colors duration-300 ${isActive("/#what-we-do") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>What We do</Link>
+//           <Link href="/testimonial" className={`transition-colors duration-300 ${isActive("/testimonial") ? "text-[#46F0FF]" : "text-white hover:!text-[#46F0FF]"}`} onClick={handleItemClick}>Testimonial</Link>
+//         </div>
+//       </div>
+
+//       {/* Mobile Drawer Menu */}
+//       <Drawer
+//         placement="right"
+//         closable={false}
+//         onClose={() => setIsMenuOpen(false)}
+//         open={isMenuOpen}
+//         bodyStyle={{ backgroundColor: "rgba(0,0,0,0.9)", padding: "2rem 1rem" }}
+//         width="80%"
+//       >
+//         <div className="flex flex-col items-center space-y-6">
+//           <ul className="flex flex-col items-center space-y-6 w-full">
+//             <li><Link href="/" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>Home</Link></li>
+//             <li><Link href="/about" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/about") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>About Us</Link></li>
+//             <li><Link href="/#what-we-do" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/#what-we-do") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>What We do</Link></li>
+//             <li><Link href="/testimonial" onClick={handleItemClick} className={`block py-3 text-center text-lg sm:text-xl font-extralight transition-all duration-300 ${isActive("/testimonial") ? "text-[#01B2C1]" : "text-white hover:text-[#01B2C1]"}`}>Testimonial</Link></li>
+//           </ul>
+
+//           <div className="mt-10">
+//             <button
+//               type="button"
+//               className="bg-[#01B2C1] text-white px-6 py-3 sm:px-8 sm:py-4 sm:text-lg rounded-full font-semibold hover:bg-white hover:text-[#01B2C1] transition duration-300"
+//             >
+//               Get started
+//             </button>
+//           </div>
+//         </div>
+//       </Drawer>
+//     </nav>
+//   );
+// };
+
+// export default Navbar;
