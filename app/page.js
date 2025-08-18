@@ -105,14 +105,14 @@ export default function Home() {
             <BenifitsSection />
           </div>
 
-          <div className="2xl:px-[84px] py-44 1280:px-[40px]">
+          <div className="2xl:px-[84px] lg:py-44 py-28 1280:px-[40px]">
             <AmazingSection />
           </div>
-          {/*
 
           <div className="">
             <PricingSection />
           </div>
+
           <div className="2xl:px-[84px] py-10">
             <Testimonials />
           </div>
@@ -121,9 +121,9 @@ export default function Home() {
             <NewsLetterSection />
           </div>
 
-          <div className="2xl:px-[84px] py-44  1280:px-[40px]">
+          <div className="2xl:px-[84px] lg:py-44  1280:px-[40px]">
             <Footer />
-          </div> */}
+          </div> 
         </div>
       </SmoothScrollProvider>
     </>

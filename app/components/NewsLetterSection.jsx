@@ -2,23 +2,26 @@ import React from "react";
 
 const NewsLetterSection = () => {
   return (
-    <div>
-      <div className="bg-[#000726] min-[1080px]:flex items-center justify-around rounded-[4px] min-[1080px]:py-[50px] min-[1280px]:py-[64px] 2xl:flex 2xl:py-[76px]">
-        <div className="min-[1080px]:text-[24px] min-[1280px]:text-[28px] 2xl:text-[32px] text-white font-semibold">
+    <div className="px-4 py-10 md:py-14 lg:py-16">
+      <div className="bg-[#000726] flex flex-col items-center gap-6 rounded-md px-4 py-8 md:flex-row md:justify-between md:px-8 lg:px-12 lg:py-12">
+        {/* Title */}
+        <div className="text-lg text-white font-semibold md:text-xl lg:text-2xl xl:text-3xl">
           Subscribe Newsletters
         </div>
-        <div className="min-[1080px]:flex items-center justify-between min-[1080px]:px-3 min-[1080px]:w-[480px] min-[1080px]:py-[18px] min-[1280px]:w-[540px] min-[1280px]:py-[20px] bg-[#00395DB2] rounded-[4px] 2xl:flex 2xl:px-3 2xl:w-[600px] 2xl:py-[22px]">
-          <div className="min-[1080px]:text-[14px] min-[1280px]:text-[15px] 2xl:text-[16px] text-white pl-5 opacity-50">
-            Enter your email
-          </div>
-          <div>
-            <button
-              type="button"
-              className="hidden md:inline-block min-[1080px]:text-[14px] min-[1080px]:w-[170px] min-[1080px]:h-[48px] min-[1280px]:w-[190px] min-[1280px]:h-[52px] 2xl:text-[16px] bg-[#01B2C1] text-white 2xl:w-[211px] 2xl:h-[56px] px-6 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#01B2C1] transition duration-300"
-            >
-              Subscribe Now
-            </button>
-          </div>
+
+        {/* Input + Button */}
+        <div className="flex w-full max-w-md md:max-w-lg lg:max-w-xl xl:max-w-2xl bg-[#00395DB2] rounded-md overflow-hidden">
+          <input
+            type="email"
+            placeholder="Enter your email"
+            className="flex-1 bg-transparent text-sm md:text-base lg:text-lg text-white px-4 py-3 placeholder-white/60 outline-none"
+          />
+          <button
+            type="button"
+            className="bg-[#01B2C1] text-white text-sm md:text-base font-semibold px-4 py-3 md:px-6 md:py-3 hover:bg-white hover:text-[#01B2C1] transition duration-300"
+          >
+            Subscribe Now
+          </button>
         </div>
       </div>
     </div>

@@ -38,7 +38,7 @@ export default function Testimonials() {
 
   return (
     <div
-      className="bg-[#00051C] min-h-screen w-full 3xl:px-10"
+      className="bg-[#00051C] w-full text-white px-4 py-12 md:py-20 lg:py-24"
       style={{
         backgroundImage: `url('/gradient.png')`,
         backgroundRepeat: "no-repeat",
@@ -46,14 +46,18 @@ export default function Testimonials() {
         backgroundSize: "contain",
       }}
     >
-      <section className="min-[1080px]:relative min-[1080px]:w-full min-[1080px]:overflow-hidden min-[1080px]:text-white min-[1080px]:py-20 min-[1080px]:px-4 min-[1080px]:flex min-[1080px]:flex-col min-[1080px]:items-center min-[1080px]:text-center min-[1080px]:z-10 2xl:relative 2xl:py-20 2xl:px-4 2xl:text-white 2xl:flex 2xl:flex-col 2xl:items-center 2xl:text-center 2xl:z-10 3xl:py-28 3xl:px-10">
-        <h3 className="min-[1080px]:text-[20px] text-gray-400 2xl:text-[24px] 3xl:text-[28px]">Testimonials</h3>
-        <h2 className="min-[1080px]:text-[42px] font-bold mt-[8px] 2xl:text-[68px] 2xl:mt-[10px] 3xl:text-[76px] 3xl:mt-[12px]">
+      <section className="flex flex-col items-center text-center">
+        {/* heading */}
+        <h3 className="text-sm text-gray-400 md:text-base lg:text-lg">
+          Testimonials
+        </h3>
+        <h2 className="text-2xl font-bold mt-2 md:text-4xl lg:text-5xl">
           What <span className="!text-cyan-400">Our Client</span> Says
         </h2>
 
-        <div className="min-[1080px]:relative min-[1080px]:bg-[#032d3e] min-[1080px]:max-w-2xl min-[1080px]:w-full min-[1080px]:rounded-xl min-[1080px]:px-6 min-[1080px]:py-14 2xl:rounded-xl 2xl:px-8 2xl:py-16 2xl:max-w-2xl 3xl:max-w-3xl 3xl:px-12 3xl:py-20 3xl:rounded-2xl">
-          <div className="min-[1080px]:absolute min-[1080px]:-bottom-10 min-[1080px]:left-1/2 min-[1080px]:transform min-[1080px]:-translate-x-1/2 min-[1080px]:w-16 min-[1080px]:h-16 min-[1080px]:border-4 min-[1080px]:border-cyan-400 min-[1080px]:rounded-full min-[1080px]:overflow-hidden min-[1080px]:bg-gray-200 2xl:w-20 2xl:h-20 3xl:w-24 3xl:h-24">
+        {/* card */}
+        <div className="relative bg-[#032d3e] w-full max-w-lg md:max-w-2xl lg:max-w-3xl rounded-xl px-6 py-10 mt-8 md:py-14 md:px-10 lg:py-16 lg:px-12">
+          <div className="absolute -bottom-10 left-1/2 transform -translate-x-1/2 w-16 h-16 md:w-20 md:h-20 lg:w-24 lg:h-24 border-4 border-cyan-400 rounded-full overflow-hidden bg-gray-200">
             <img
               src={testimonials[current].img}
               alt={testimonials[current].name}
@@ -61,21 +65,22 @@ export default function Testimonials() {
             />
           </div>
 
-          <p className="min-[1080px]:text-[15px] text-gray-300 leading-relaxed mb-6 3xl:text-lg 3xl:mb-8">
+          <p className="text-sm text-gray-300 leading-relaxed mb-6 md:text-base lg:text-lg">
             {testimonials[current].text}
           </p>
-          <h4 className="text-cyan-400 font-bold text-[16px] 3xl:text-xl">
+          <h4 className="text-cyan-400 font-bold text-base md:text-lg lg:text-xl">
             {testimonials[current].name}
           </h4>
-          <p className="text-sm text-gray-400 3xl:text-base">
+          <p className="text-xs text-gray-400 md:text-sm lg:text-base">
             {testimonials[current].title}
           </p>
         </div>
 
-        <div className="min-[1080px]:mt-14 min-[1080px]:flex min-[1080px]:items-center min-[1080px]:justify-center min-[1080px]:gap-3 min-[1080px]:flex-wrap 2xl:mt-16 2xl:gap-4 3xl:mt-20 3xl:gap-6 cursor-pointer">
+        {/* navigation */}
+        <div className="mt-16 flex items-center justify-center gap-3 flex-wrap md:mt-20 lg:gap-6">
           <button
             onClick={prev}
-            className="min-[1080px]:w-9 min-[1080px]:h-9 min-[1080px]:text-lg min-[1080px]:border-2 min-[1080px]:border-cyan-400 min-[1080px]:text-cyan-400 min-[1080px]:rounded-full min-[1080px]:flex min-[1080px]:items-center min-[1080px]:justify-center min-[1080px]:hover:bg-cyan-400 min-[1080px]:hover:text-black min-[1080px]:transition 2xl:w-10 2xl:h-10 2xl:text-xl 3xl:w-12 3xl:h-12 3xl:text-2xl"
+            className="w-9 h-9 text-lg border-2 border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center hover:bg-cyan-400 hover:text-black transition md:w-10 md:h-10 md:text-xl lg:w-12 lg:h-12 lg:text-2xl"
           >
             ←
           </button>
@@ -83,10 +88,11 @@ export default function Testimonials() {
           {testimonials.map((t, i) => (
             <div
               key={i}
-              className={`min-[1080px]:w-10 min-[1080px]:h-10 min-[1080px]:rounded-full min-[1080px]:overflow-hidden min-[1080px]:border min-[1080px]:transition-transform min-[1080px]:duration-300 2xl:w-12 2xl:h-12 3xl:w-14 3xl:h-14 ${
+              onClick={() => setCurrent(i)}
+              className={`w-8 h-8 rounded-full overflow-hidden border transition-transform duration-300 cursor-pointer md:w-10 md:h-10 lg:w-12 lg:h-12 ${
                 i === current
-                  ? "min-[1080px]:border-cyan-400 min-[1080px]:border-4 min-[1080px]:scale-110"
-                  : "min-[1080px]:border-gray-400 min-[1080px]:opacity-50"
+                  ? "border-cyan-400 border-2 scale-110"
+                  : "border-gray-400 opacity-50"
               }`}
             >
               <img
@@ -99,17 +105,16 @@ export default function Testimonials() {
 
           <button
             onClick={next}
-            className="min-[1080px]:w-9 min-[1080px]:h-9 min-[1080px]:text-lg min-[1080px]:border-2 min-[1080px]:border-cyan-400 min-[1080px]:text-cyan-400 min-[1080px]:rounded-full min-[1080px]:flex min-[1080px]:items-center min-[1080px]:justify-center min-[1080px]:hover:bg-cyan-400 min-[1080px]:hover:text-black min-[1080px]:transition 2xl:w-10 2xl:h-10 2xl:text-xl 3xl:w-12 3xl:h-12 3xl:text-2xl"
+            className="w-9 h-9 text-lg border-2 border-cyan-400 text-cyan-400 rounded-full flex items-center justify-center hover:bg-cyan-400 hover:text-black transition md:w-10 md:h-10 md:text-xl lg:w-12 lg:h-12 lg:text-2xl"
           >
             →
           </button>
         </div>
       </section>
 
-      <div className="">
-        <div className="flex justify-center">
-        <hr className="!text-[#01B2C1] bg-[#01B2C1] min-[1080px]:w-[1400px] min-[1280px]:w-[1200px] 2xl:w-[1297px] 3xl:w-[1700px]" />
-        </div>
+      {/* bottom divider */}
+      <div className="mt-12 md:mt-16 flex justify-center">
+        <hr className="w-full max-w-xs sm:max-w-md md:max-w-2xl lg:max-w-4xl xl:max-w-5xl border-t-2 border-[#01B2C1]" />
       </div>
     </div>
   );
