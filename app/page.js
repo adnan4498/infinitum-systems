@@ -12,6 +12,7 @@ import PricingSection from "./components/PricingSection";
 import Testimonials from "./components/Testimonials";
 import NewsLetterSection from "./components/NewsLetterSection";
 import Footer from "./components/Footer";
+import Footer2 from "./components/Footer2";
 import GlowingCard from "./components/Dummy";
 import { ThreeDMarquee } from "./components/ui/3d-marquee";
 import bImg from "../public/benifits-img.png";
@@ -123,7 +124,8 @@ export default function Home() {
 
           <div className="2xl:px-[84px] lg:py-44  1280:px-[40px]">
             <Footer />
-          </div> 
+          </div>
+   
         </div>
       </SmoothScrollProvider>
     </>

@@ -161,7 +161,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`py-6 sm:py-8 lg:py-10 px-4 lg:pr-0 pr-6 sm:px-8 lg:px-[108px] fixed w-full z-50 top-0 start-0 transition-all duration-300 ${
+      className={`py-6 1280:px-10 2xl:px-[108px] sm:py-8 lg:py-10 px-4 lg:pr-0 pr-6 sm:px-8 lg:px-[8px] fixed w-full z-50 top-0 start-0 transition-all duration-300 ${
         scrolled
           ? "bg-[#00051C]/60 backdrop-blur-xl shadow-md"
           : "bg-transparent"
@@ -180,15 +180,15 @@ const Navbar = () => {
           </Link>
         </div>
 
-        <div className="flex md:order-2">
+        <div className="flex md:order-2 block lg:hidden 1280:block">
           {mounted && isDesktop && (
             <Button
-              className="font-semibold text-base sm:text-lg cursor-pointer"
+              className="font-semibold text-base sm:text-lg cursor-pointer "
               containerClassName="inline-block"
               borderRadius="9999px"
               duration={3000}
             >
-              Get started
+              Get starteds
             </Button>
           )}
           <button
